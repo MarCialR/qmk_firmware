@@ -18,6 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include QMK_KEYBOARD_H
 
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT_split_3x6_3(
 
@@ -30,25 +31,12 @@ KC_ESC,  KC_Q,               KC_W,              KC_E,               KC_R,    KC_
 KC_CAPS, KC_A, LALT_T(KC_S), MT(MOD_LCTL, KC_D), LSFT_T(KC_F), KC_G,       KC_H, MT(MOD_RSFT, KC_J), MT(MOD_RCTL, KC_K), MT(MOD_RALT, KC_L), KC_SCLN, KC_QUOT,
   
 //|--------+--------+--------+--------+--------+--------|                              |--------+--------+--------+--------+--------+--------|
-KC_TAB, KC_Z,   LT(_THREE, KC_X),      LT(_TWO, KC_C),    LT(_NAV, KC_V), KC_B,       KC_N, LT(_NAV, KC_M), LT(_TWO, KC_COMM),  LT(_THREE, KC_DOT), KC_SLSH,  KC_ENT,
+KC_TAB, KC_Z,   LT(_THREE, KC_X),      LT(_TWO, KC_C),    LT(_NAV, KC_V), KC_B,       KC_N, LT(8, KC_M), LT(_TWO, KC_COMM),  LT(_THREE, KC_DOT), KC_SLSH,  KC_ENT,
 //|--------+--------+--------+--------+--------+--------+--------|                     |--------+--------+--------+--------+--------+--------+--------|
                               KC_LGUI,   TG(_NAV),  KC_SPC,                            KC_SPC,   LT(_MATH, KC_M), KC_RALT
                              //`--------------------------'  `--------------------------'
 
-
-
-
-
-
-
-
-
   ),
-
-
-
-
-
 
     [_NAV] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
@@ -105,7 +93,7 @@ KC_TAB, KC_Z,   LT(_THREE, KC_X),      LT(_TWO, KC_C),    LT(_NAV, KC_V), KC_B, 
   ),
 
 
-    [5] = LAYOUT_split_3x6_3(
+    [6] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        KC_TAB, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -117,7 +105,7 @@ KC_TAB, KC_Z,   LT(_THREE, KC_X),      LT(_TWO, KC_C),    LT(_NAV, KC_V), KC_B, 
                                       //`--------------------------'  `--------------------------'
   ),
 
-    [6] = LAYOUT_split_3x6_3(
+    [7] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
