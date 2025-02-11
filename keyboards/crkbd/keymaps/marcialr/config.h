@@ -29,6 +29,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define _ONE 1
 #define _TWO 2
 #define _THREE 3
+#define _MATH 5
+#define _NAV 7
+
 
 #ifdef RGBLIGHT_ENABLE
     #define RGBLIGHT_EFFECT_BREATHING
