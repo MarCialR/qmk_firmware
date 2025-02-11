@@ -25,6 +25,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define QUICK_TAP_TERM 0
 //#define TAPPING_TERM 100
 
+#define _BASE 0
+#define _ONE 1
+#define _TWO 2
+#define _THREE 3
+
 #ifdef RGBLIGHT_ENABLE
     #define RGBLIGHT_EFFECT_BREATHING
     #define RGBLIGHT_EFFECT_RAINBOW_MOOD
