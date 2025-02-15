@@ -30,6 +30,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define _SYMBOLS 2
 #define _MATH 3
 #define _COLOR 4
+#define _WEIRD 4
 
 
 #ifdef RGBLIGHT_ENABLE
