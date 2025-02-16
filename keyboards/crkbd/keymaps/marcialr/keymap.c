@@ -12,10 +12,12 @@ https://docs.qmk.fm/features/tap_dance#how-to-use
 enum {
     ESC_CAPS,
     DOT_2X,
+    QUOT_2X,
     COMMA_2x,
     SOMTH_BOOT,
     SLASH_BCKSL,
-    WEIRD
+    WEIRD,
+    E_ALT_TAB
 };
 
 // Tap Dance definitions
@@ -23,10 +25,12 @@ tap_dance_action_t tap_dance_actions[] = {
     // Tap once for Escape, twice for Caps Lock
     [ESC_CAPS] = ACTION_TAP_DANCE_DOUBLE(KC_ESC, KC_CAPS),
     [DOT_2X] = ACTION_TAP_DANCE_DOUBLE(KC_DOT, S(KC_SEMICOLON)),
+    [QUOT_2X] = ACTION_TAP_DANCE_DOUBLE(KC_QUOT, S(KC_QUOT)),
     [COMMA_2x] = ACTION_TAP_DANCE_DOUBLE(KC_COMM, KC_SEMICOLON),
     [SOMTH_BOOT] = ACTION_TAP_DANCE_DOUBLE(KC_1, QK_BOOT),
     [SLASH_BCKSL] = ACTION_TAP_DANCE_DOUBLE(KC_SLSH, KC_BACKSLASH),
-    [WEIRD] = ACTION_TAP_DANCE_DOUBLE(KC_K, OSL(_WEIRD)),
+    [WEIRD] = ACTION_TAP_DANCE_DOUBLE(KC_K, QK_BOOT),
+    [E_ALT_TAB] = ACTION_TAP_DANCE_DOUBLE(KC_E, A(KC_TAB)),
     
 };
 
@@ -34,13 +38,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_BASE] = LAYOUT_split_3x6_3(
 
-TD(ESC_CAPS), KC_Q,     KC_W,          KC_E,        KC_R,    KC_T,          KC_Y,      KC_U,         KC_I,             TD(SOMTH_BOOT),    KC_P,    KC_BSPC,
+TD(ESC_CAPS), KC_Q,     KC_W,          TD(E_ALT_TAB),        KC_R,    KC_T,          KC_Y,      KC_U,         KC_I,             KC_O,    KC_P,    KC_BSPC,
 
-KC_CAPS,   KC_A,  LALT_T(KC_S),  CTL_T(KC_D),  SFT_T(KC_F),  KC_G,          KC_H, RSFT_T(KC_J),   RCTL_T(KC_K),  RALT_T( KC_L), ES_NTIL,  KC_QUOT,
+KC_CAPS,   KC_A,  LALT_T(KC_S),  CTL_T(KC_D),  SFT_T(KC_F),  KC_G,          KC_H, RSFT_T(KC_J),   RCTL_T(KC_K),  LALT_T( KC_L), ES_NTIL,  TD(QUOT_2X),
 
 KC_TAB,    KC_Z,        KC_X,        KC_C,          KC_V,    KC_B,          KC_N,       KC_M,     TD(COMMA_2x),  TD(DOT_2X),    TD(SLASH_BCKSL),  KC_ENT,
 
-                    OSL(_WEIRD),  XXXXXXX,   LT(_NAV, KC_SPC),              LT(_SYMBOLS, KC_SPC),   TO(_SYMBOLS), TD(WEIRD)
+                    XXXXXXX,  LT(_MATH,XXXXXXX),   LT(_NAV, KC_SPC),              LT(_SYMBOLS, KC_SPC),   TO(_SYMBOLS), LT(_WEIRD,XXXXXXX)
   ),
 
 
@@ -62,14 +66,20 @@ KC_TAB,    KC_Z,        KC_X,        KC_C,          KC_V,    KC_B,          KC_N
 
 
   [_SYMBOLS] = LAYOUT_split_3x6_3(
-       KC_ESC, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC,
-      KC_LCTL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_MINS,  KC_EQL, KC_LBRC, KC_RBRC, KC_BSLS,  KC_GRV,
-      KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, TO(_NAV),
+       KC_ESC, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                      KC_CIRC, KC_AMPR, XXXXXXX, XXXXXXX, XXXXXXX, KC_BSPC,
+      KC_LCTL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX,  KC_LPRN, KC_RPRN, KC_PIPE, XXXXXXX,  KC_GRV,
+      KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_LCBR, KC_LBRC, KC_RBRC, KC_RCBR, TD(SLASH_BCKSL), XXXXXXX,
                               KC_LGUI,   TO(_BASE),  KC_SPC,                            KC_SPC,   TO(_MATH), KC_2
 
   ),
 
+/*kkk
 
+       KC_ESC, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC,
+      KC_LCTL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_MINS,  KC_EQL, KC_LBRC, KC_RBRC, KC_BSLS,  KC_GRV,
+      KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, TO(_NAV),
+
+*/
 
                 
     [_MATH] = LAYOUT_split_3x6_3(
@@ -94,7 +104,7 @@ KC_TAB,    KC_Z,        KC_X,        KC_C,          KC_V,    KC_B,          KC_N
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       RM_NEXT, RM_HUED, RM_SATD, RM_VALD, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                              KC_LGUI,   TO(_BASE),  KC_8,                            KC_SPC,   TO(_BASE), XXXXXXX
+                              XXXXXXX,   TO(_BASE),  KC_8,                            KC_SPC,   TO(_BASE), XXXXXXX
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -107,7 +117,7 @@ KC_TAB,    KC_Z,        KC_X,        KC_C,          KC_V,    KC_B,          KC_N
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       RM_NEXT, RM_HUED, RM_SATD, RM_VALD, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                              KC_LGUI,   TO(_BASE),  KC_9,                            KC_F,   KC_Q, QK_BOOT
+                              XXXXXXX,   TO(_BASE),  KC_9,                            KC_F,   QK_BOOT, XXXXXXX
                                       //`--------------------------'  `--------------------------'
   )
 };
