@@ -46,9 +46,7 @@ LM(layer, mod)	Momentarily turn on layer (like MO) with mod active as well. Wher
 TODO
 
 detect 2xSpace
+    Two keys combination as a trigger for macro (or anything else) - https://github.com/qmk/qmk_firmware/issues/817
 TAP-HOLD
-
-
-
 
 

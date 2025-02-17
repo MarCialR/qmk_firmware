@@ -30,7 +30,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define _SYMBOLS 2
 #define _MATH 3
 #define _COLOR 4
-#define _WEIRD 4
+#define _WEIRD 5
+#define _TEST 6
 
 
 #ifdef RGBLIGHT_ENABLE
@@ -49,3 +50,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define RGBLIGHT_SAT_STEP 17
     #define RGBLIGHT_VAL_STEP 17
 #endif
+
+#undef CHORD_COUNT
+#define CHORD_COUNT 3
